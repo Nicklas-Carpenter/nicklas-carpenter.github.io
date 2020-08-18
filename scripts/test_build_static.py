@@ -8,14 +8,14 @@ class HTMLTouchUpTestCase(TestCase):
     def test_HTMLTouchUp_PassRegularTag_ExpectEcho(self):
         self.parser.feed("<div class='1'><p class='2'>Hi</p></div>")
         self.assertEqual(
-            self.parser.return_tag(), 
+            self.parser.return_html(), 
             '<div class="1"><p class="2">Hi</p></div>'
         )
     
     def test_HTMLTouchUp_PassSelfClosingTag_ExpectReplacement(self):
         self.parser.feed("<div class='1'><script src='../dist/bundle.js'/></div>")
         self.assertEqual(
-            self.parser.return_tag(),
+            self.parser.return_html(),
             '<div class="1"><script src="index.js"/></div>'
         )     
 

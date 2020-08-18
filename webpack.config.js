@@ -1,10 +1,8 @@
 const path = require("path");
 const webpack = require("webpack");
 
-module.exports = {
+let config = {
     entry: "./src/index.tsx",
-    // mode: "development",
-    devtool: "inline-source-map",
     module: {
       rules: [
         {
@@ -21,12 +19,22 @@ module.exports = {
       // publicPath: "/dist/",
       filename: "bundle.js",
       path: path.resolve(__dirname, "dist")
-    },
-    devServer: {
-      contentBase: path.join(__dirname, "public/"),
-      port: 3000,
-      publicPath: "http://localhost:3000/dist/",
-      hotOnly: true
-    },
-    plugins: [new webpack.HotModuleReplacementPlugin()]
-  };
+    }
+};
+
+module.exports = (env, args) => {
+    if (args.mode === "development") {
+      config.devtool = "source-map";
+      config.devServer = {
+        contentBase: path.join(__dirname, "public/"),
+        port: 3000,
+        publicPath: "http://localhost:3000/dist/",
+        hotOnly: true
+      },
+      config.plugins = [new webpack.HotModuleReplacementPlugin()]
+    }
+
+    config.mode = args.mode
+
+    return config;
+};
