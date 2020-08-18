@@ -1,0 +1,8 @@
+# Don't commit node_modules
+node_modules
+
+# Don't commit any logs
+**/*.log
+
+# Don't commit the output script
+public/bundle.js
