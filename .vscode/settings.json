@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "scripts/build_static": "python"
+    },
+    "python.linting.enabled": false
+}

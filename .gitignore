@@ -6,3 +6,12 @@ node_modules
 
 # Don't commit the output script
 public/bundle.js
+
+# Don't commit the static directory
+static
+
+# Don't commit the distributable directory
+dist
+
+# Don't commit .pcy files
+**/*.pyc
